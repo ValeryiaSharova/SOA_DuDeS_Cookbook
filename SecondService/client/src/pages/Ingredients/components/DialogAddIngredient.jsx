@@ -40,7 +40,7 @@ const AddIngredient = ({ onRequestClose, addHandler }) => {
 
   return (
     <Dialog open>
-      <DialogTitle aria-labelledby="customized-dialog-title">Add a new game</DialogTitle>
+      <DialogTitle aria-labelledby="customized-dialog-title">Add a new ingredient</DialogTitle>
       <DialogContent dividers>
         <div className="modal-body">
           <Formik
