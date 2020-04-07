@@ -24,7 +24,20 @@ const IngredientsPage = () => {
       const data = await request('/api/ingredients/add', 'POST', {
         ...newIngredient,
       });
-      console.log(data.message);
+
+      if (data.message) {
+        setMessage(data.message);
+      }
+      fetchIngredients();
+    } catch (error) {}
+  };
+
+  const changeHandler = async changedIngredient => {
+    try {
+      const data = await request('/api/ingredients/change', 'POST', {
+        ...changedIngredient,
+      });
+
       if (data.message) {
         setMessage(data.message);
       }
@@ -75,7 +88,8 @@ const IngredientsPage = () => {
             <th scope="col">Squirrels</th>
             <th scope="col">Fats</th>
             <th scope="col">Carbohydrates</th>
-            <th scope="col">Delete</th>
+            <th scope="col" />
+            <th scope="col" />
           </tr>
         </thead>
         <tbody>
@@ -84,6 +98,7 @@ const IngredientsPage = () => {
               ingredient={ingredient}
               index={index}
               deleteHandler={deleteHandler}
+              changeHandler={changeHandler}
               key={ingredient._id}
             />
           ))}

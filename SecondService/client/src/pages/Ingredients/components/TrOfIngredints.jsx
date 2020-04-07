@@ -1,6 +1,8 @@
 import React from 'react';
+import { ModalConsumer } from '../../../context/ModalContext';
+import DialogChangeIngredient from './DialogChangeIngredient';
 
-const TrOfIngredients = ({ ingredient, index, deleteHandler }) => {
+const TrOfIngredients = ({ ingredient, index, deleteHandler, changeHandler }) => {
   const deleteIngredient = () => {
     deleteHandler(ingredient.name);
   };
@@ -12,6 +14,19 @@ const TrOfIngredients = ({ ingredient, index, deleteHandler }) => {
       <td>{ingredient.squirrels}</td>
       <td>{ingredient.fats}</td>
       <td>{ingredient.carbohydrates}</td>
+      <td>
+        <ModalConsumer>
+          {({ showModal }) => (
+            <button
+              type="button"
+              className="btn btn-delete"
+              onClick={() => showModal(DialogChangeIngredient, { ingredient, changeHandler })}
+            >
+              Change
+            </button>
+          )}
+        </ModalConsumer>
+      </td>
       <td>
         <button type="button" className="btn btn-delete" onClick={deleteIngredient}>
           Delete
