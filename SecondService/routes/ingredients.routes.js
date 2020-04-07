@@ -47,6 +47,45 @@ router.post(
   }
 );
 
+router.post(
+  "/change",
+  [
+    check("name", "Error name").isString(),
+    check("calories", "Error calories").isNumeric(),
+    check("squirrels", "Error squirrels").isNumeric(),
+    check("fats", "Error fats").isNumeric(),
+    check("carbohydrates", "Error carbohydrates").isNumeric(),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res
+          .status(201)
+          .json({ errors: errors.array(), message: "Failed data" });
+      }
+
+      const { _id, name, calories, squirrels, fats, carbohydrates } = req.body;
+
+      const existing = await Ingredient.findById(_id);
+
+      await Ingredient.updateOne(existing, {
+        _id,
+        name,
+        calories,
+        squirrels,
+        fats,
+        carbohydrates,
+      });
+
+      res.status(201).json({ message: "Ingredient was changed." });
+    } catch (error) {
+      res.status(500).json({ message: "Something went wrong. Try again." });
+    }
+  }
+);
+
 router.post("/delete", async (req, res) => {
   const { name } = req.body;
   await Ingredient.deleteOne({ name });
