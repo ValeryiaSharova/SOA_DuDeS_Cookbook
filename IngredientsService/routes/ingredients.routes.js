@@ -101,4 +101,37 @@ router.get("/getAllIngredients", async (req, res) => {
   }
 });
 
+router.get("/getAllIngredientsNames", async (req, res) => {
+  try {
+    const ingredients = await Ingredient.find({});
+    const ingredientsNames = ingredients.map((ingredient) => ingredient.name);
+
+    res.json(ingredientsNames);
+  } catch (e) {
+    res.status(500).json({ message: "Something went wrong. Try again." });
+  }
+});
+
+router.get("/getIngredient/:name", async (req, res) => {
+  try {
+    const name = req.params.name;
+    const ingredient = await Ingredient.findOne({ name });
+
+    res.json(ingredient);
+  } catch (e) {
+    res.status(500).json({ message: "something went wrong. try again" });
+  }
+});
+
+router.get("/getIngredientCalories/:name", async (req, res) => {
+  try {
+    const name = req.params.name;
+    const ingredient = await Ingredient.findOne({ name });
+
+    res.json(ingredient.calories);
+  } catch (e) {
+    res.status(500).json({ message: "something went wrong. try again" });
+  }
+});
+
 module.exports = router;
