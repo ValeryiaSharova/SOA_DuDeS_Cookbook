@@ -14,7 +14,7 @@ const IngredientsPage = () => {
 
   const fetchIngredients = useCallback(async () => {
     try {
-      const fetched = await request('/api/ingredients', 'GET');
+      const fetched = await request('/api/ingredients/getAllIngredients', 'GET');
       setIngredients(fetched);
     } catch (e) {}
   }, [request]);

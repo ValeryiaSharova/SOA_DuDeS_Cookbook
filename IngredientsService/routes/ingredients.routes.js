@@ -92,7 +92,7 @@ router.post("/delete", async (req, res) => {
   res.status(201).json({ message: "Ingredient was deleted." });
 });
 
-router.get("/", async (req, res) => {
+router.get("/getAllIngredients", async (req, res) => {
   try {
     const ingredients = await Ingredient.find({});
     res.json(ingredients);
