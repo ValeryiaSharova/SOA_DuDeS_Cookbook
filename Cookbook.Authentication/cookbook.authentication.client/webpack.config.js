@@ -1,4 +1,4 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -6,8 +6,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-        '@': path.resolve(__dirname, 'src/'),
-    }
+      '@': path.resolve(__dirname, 'src/'),
+    },
   },
   module: {
     rules: [
@@ -15,28 +15,28 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
-          }
-        ]
+            loader: 'html-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
-              modules: true
-            }
-          }
-        ]
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(jpg|png)$/,
@@ -44,20 +44,20 @@ module.exports = {
           loader: 'url-loader',
         },
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    })
+      template: './src/index.html',
+      filename: './index.html',
+    }),
   ],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   externals: {
     config: JSON.stringify({
-        apiUrl: 'http://localhost:2000/api'
-    })
-  }
+      apiUrl: 'http://localhost:2000/api',
+    }),
+  },
 };
