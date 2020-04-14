@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const LoginOrIngredient = ({ location }) => {
+const LoginOrIngredient = ({ location, login }) => {
   const handleRedirect = () => {
     window.location.href = `http://localhost:2020/login?callbackUrl=${window.location.href}`;
   };
@@ -23,6 +23,7 @@ const LoginOrIngredient = ({ location }) => {
     }
 
     localStorage.setItem('token', token);
+    login(token);
   }
 
   return (
