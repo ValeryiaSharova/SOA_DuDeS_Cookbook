@@ -139,7 +139,9 @@ namespace Cookbook.Authentication.Service.Realizations
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = securityKey
+                    IssuerSigningKey = securityKey,
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 }, out SecurityToken validatedToken);
             }
             catch
