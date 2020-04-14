@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, login, ...rest }) => (
   <Route
     {...rest}
     render={props => {
@@ -16,6 +16,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         }
 
         localStorage.setItem('token', token);
+        login(token);
       }
 
       return <Component {...props} />;
