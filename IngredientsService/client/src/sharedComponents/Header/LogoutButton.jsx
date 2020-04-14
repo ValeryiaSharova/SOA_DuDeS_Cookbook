@@ -1,8 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-const LogoutButton = () => {
+const LogoutButton = ({ logout }) => {
+  const history = useHistory();
+
   const logoutHandler = () => {
     localStorage.removeItem('token');
+    logout();
+    history.push('/');
   };
 
   return (

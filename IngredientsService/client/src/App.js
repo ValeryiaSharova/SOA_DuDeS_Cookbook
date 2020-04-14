@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ModalProvider } from './context/ModalContext';
 import store from './redux/store';
 import ModalRoot from './context/ModalRoot';
-import Header from './sharedComponents/Header/Header';
 import Page from './pages/Index/IndexPage';
+import Header from './sharedComponents/Header/HeaderContainer';
 import Ingredients from './pages/Ingredients/IngredientsPage';
 import PrivateRoute from './sharedComponents/PrivateRoute/PrivateRoute';
 

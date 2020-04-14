@@ -5,7 +5,7 @@ import About from '../Dialogs/About/About';
 import Contact from '../Dialogs/Contact/Contact';
 import LogoutButton from './LogoutButton';
 
-const Header = () => (
+const Header = ({ token, logout }) => (
   <nav className="navbar nav-style navbar-expand-sm">
     <div className="container">
       <Link className="navbar-brand" to="/">
@@ -31,9 +31,7 @@ const Header = () => (
               </li>
             </ul>
             <ul className="navbar-nav navbar-right ml-auto">
-              <li className="nav-item mr-2">
-                {localStorage.getItem('token') ? <LogoutButton /> : null}
-              </li>
+              <li className="nav-item mr-2">{token ? <LogoutButton logout={logout} /> : null}</li>
             </ul>
           </div>
         )}
@@ -41,5 +39,4 @@ const Header = () => (
     </div>
   </nav>
 );
-
 export default Header;
