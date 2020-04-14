@@ -6,7 +6,7 @@ import store from './redux/store';
 import ModalRoot from './context/ModalRoot';
 import Header from './sharedComponents/Header/HeaderContainer';
 import Page from './pages/Index/IndexPageContainer';
-import Ingredients from './pages/Ingredients/IngredientsPage';
+import Ingredients from './pages/Ingredients/IngredientsPageContainer';
 import PrivateRoute from './sharedComponents/PrivateRoute/PrivateRouteContainer';
 
 const App = () => (

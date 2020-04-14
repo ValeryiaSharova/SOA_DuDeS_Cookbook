@@ -7,7 +7,7 @@ import DialogAddIngredient from './components/DialogAddIngredient';
 import TrOfIngredients from './components/TrOfIngredints';
 import Footer from '../../sharedComponents/Footer/Footer';
 
-const IngredientsPage = () => {
+const IngredientsPage = ({ login }) => {
   const [ingredients, setIngredients] = useState([]);
   const { loading, request } = useHttp();
   const [message, setMessage] = useState('');
@@ -81,7 +81,8 @@ const IngredientsPage = () => {
 
   useEffect(() => {
     fetchIngredients();
-  }, [fetchIngredients]);
+    login(localStorage.getItem('token'));
+  }, [fetchIngredients, login]);
 
   if (loading) {
     return <Spinner />;
