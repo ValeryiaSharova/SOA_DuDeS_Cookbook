@@ -7,7 +7,7 @@ import ModalRoot from './context/ModalRoot';
 import Header from './sharedComponents/Header/HeaderContainer';
 import Page from './pages/Index/IndexPageContainer';
 import Ingredients from './pages/Ingredients/IngredientsPage';
-import PrivateRoute from './sharedComponents/PrivateRoute/PrivateRoute';
+import PrivateRoute from './sharedComponents/PrivateRoute/PrivateRouteContainer';
 
 const App = () => (
   <Provider store={store}>
