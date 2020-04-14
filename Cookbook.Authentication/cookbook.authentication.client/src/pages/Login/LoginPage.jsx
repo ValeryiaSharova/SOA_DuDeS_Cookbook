@@ -9,9 +9,6 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
-        if (localStorage.getItem('user')) {
-            this.props.history.push('/');
-        }
     }
 
     render() {
