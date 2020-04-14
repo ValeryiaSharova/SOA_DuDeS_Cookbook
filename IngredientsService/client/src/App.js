@@ -5,6 +5,7 @@ import ModalRoot from './context/ModalRoot';
 import Header from './sharedComponents/Header/Header';
 import Page from './pages/Index/IndexPage';
 import Ingredients from './pages/Ingredients/IngredientsPage';
+import PrivateRoute from './sharedComponents/PrivateRoute/PrivateRoute';
 
 const App = () => (
   <BrowserRouter>
@@ -13,7 +14,7 @@ const App = () => (
       <Header />
       <Switch>
         <Route path="/" exact component={Page} />
-        <Route path="/ingredients" exact component={Ingredients} />
+        <PrivateRoute path="/ingredients" exact component={Ingredients} />
       </Switch>
     </ModalProvider>
   </BrowserRouter>

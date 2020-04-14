@@ -11,19 +11,29 @@ const IngredientsPage = () => {
   const [ingredients, setIngredients] = useState([]);
   const { loading, request } = useHttp();
   const [message, setMessage] = useState('');
+  const token = localStorage.getItem('token');
 
   const fetchIngredients = useCallback(async () => {
     try {
-      const fetched = await request('/api/ingredients/getAllIngredients', 'GET');
+      const fetched = await request('/api/ingredients/getAllIngredients', 'GET', null, {
+        Authorization: `Bearer ${token}`,
+      });
       setIngredients(fetched);
     } catch (e) {}
-  }, [request]);
+  }, [request, token]);
 
   const addHandler = async newIngredient => {
     try {
-      const data = await request('/api/ingredients/add', 'POST', {
-        ...newIngredient,
-      });
+      const data = await request(
+        '/api/ingredients/add',
+        'POST',
+        {
+          ...newIngredient,
+        },
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      );
 
       if (data.message) {
         setMessage(data.message);
@@ -34,9 +44,16 @@ const IngredientsPage = () => {
 
   const changeHandler = async changedIngredient => {
     try {
-      const data = await request('/api/ingredients/change', 'POST', {
-        ...changedIngredient,
-      });
+      const data = await request(
+        '/api/ingredients/change',
+        'POST',
+        {
+          ...changedIngredient,
+        },
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      );
 
       if (data.message) {
         setMessage(data.message);
@@ -47,7 +64,14 @@ const IngredientsPage = () => {
 
   const deleteHandler = async name => {
     try {
-      const data = await request('/api/ingredients/delete', 'POST', { name });
+      const data = await request(
+        '/api/ingredients/delete',
+        'POST',
+        { name },
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      );
       if (data.message) {
         setMessage(data.message);
       }
