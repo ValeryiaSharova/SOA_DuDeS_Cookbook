@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { check, validationResult } = require("express-validator");
+const auth = require("../middleware/auth.middleware");
 const Ingredient = require("../models/Ingredient");
 
 router.post(
@@ -12,6 +13,7 @@ router.post(
     check("fats", "Error fats").isNumeric(),
     check("carbohydrates", "Error carbohydrates").isNumeric(),
   ],
+  auth,
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -56,6 +58,7 @@ router.post(
     check("fats", "Error fats").isNumeric(),
     check("carbohydrates", "Error carbohydrates").isNumeric(),
   ],
+  auth,
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -86,13 +89,13 @@ router.post(
   }
 );
 
-router.post("/delete", async (req, res) => {
+router.post("/delete", auth, async (req, res) => {
   const { name } = req.body;
   await Ingredient.deleteOne({ name });
   res.status(201).json({ message: "Ingredient was deleted." });
 });
 
-router.get("/getAllIngredients", async (req, res) => {
+router.get("/getAllIngredients", auth, async (req, res) => {
   try {
     const ingredients = await Ingredient.find({});
     res.json(ingredients);
@@ -101,7 +104,7 @@ router.get("/getAllIngredients", async (req, res) => {
   }
 });
 
-router.get("/getAllIngredientsNames", async (req, res) => {
+router.get("/getAllIngredientsNames", auth, async (req, res) => {
   try {
     const ingredients = await Ingredient.find({});
     const ingredientsNames = ingredients.map((ingredient) => ingredient.name);
@@ -112,7 +115,7 @@ router.get("/getAllIngredientsNames", async (req, res) => {
   }
 });
 
-router.get("/getIngredient/:name", async (req, res) => {
+router.get("/getIngredient/:name", auth, async (req, res) => {
   try {
     const name = req.params.name;
     const ingredient = await Ingredient.findOne({ name });
@@ -123,7 +126,7 @@ router.get("/getIngredient/:name", async (req, res) => {
   }
 });
 
-router.get("/getIngredientCalories/:name", async (req, res) => {
+router.get("/getIngredientCalories/:name", auth, async (req, res) => {
   try {
     const name = req.params.name;
     const ingredient = await Ingredient.findOne({ name });
