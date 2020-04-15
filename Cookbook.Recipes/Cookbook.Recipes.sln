@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookbook.Recipes.Repository", "Cookbook.Recipes.Repository\Cookbook.Recipes.Repository.csproj", "{94DC765C-3EA7-4719-BC26-4D32B90FA360}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookbook.Recipes.Service", "Cookbook.Recipes.Service\Cookbook.Recipes.Service.csproj", "{767BCBFC-C3C7-449C-AFBE-76FFCFA96501}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360} = {94DC765C-3EA7-4719-BC26-4D32B90FA360}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookbook.Recipes.WebApi", "Cookbook.Recipes.WebApi\Cookbook.Recipes.WebApi.csproj", "{AD6C0639-66CB-49A9-8C57-68C5EA18E1EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360} = {94DC765C-3EA7-4719-BC26-4D32B90FA360}
+		{767BCBFC-C3C7-449C-AFBE-76FFCFA96501} = {767BCBFC-C3C7-449C-AFBE-76FFCFA96501}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DC765C-3EA7-4719-BC26-4D32B90FA360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767BCBFC-C3C7-449C-AFBE-76FFCFA96501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767BCBFC-C3C7-449C-AFBE-76FFCFA96501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767BCBFC-C3C7-449C-AFBE-76FFCFA96501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767BCBFC-C3C7-449C-AFBE-76FFCFA96501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD6C0639-66CB-49A9-8C57-68C5EA18E1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6C0639-66CB-49A9-8C57-68C5EA18E1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD6C0639-66CB-49A9-8C57-68C5EA18E1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD6C0639-66CB-49A9-8C57-68C5EA18E1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD6B872A-2251-4D7D-824F-C2B8C8173755}
+	EndGlobalSection
+EndGlobal
